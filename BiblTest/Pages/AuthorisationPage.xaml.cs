@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BiblTest.Windows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,7 +30,8 @@ namespace BiblTest.Pages
 
         private void btnVhod_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new MenuEmployeePage());
+            MenuEmployeeWindow menuEmployeeWindow = new MenuEmployeeWindow();
+            menuEmployeeWindow.Show();
         }
     }
 }

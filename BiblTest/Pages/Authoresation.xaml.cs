@@ -27,7 +27,7 @@ namespace BiblTest.Pages
 
         private void btnVhod_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new MenuEmployeePage());
+           
         }
 
         private void btnVhodChit_Click(object sender, RoutedEventArgs e)
