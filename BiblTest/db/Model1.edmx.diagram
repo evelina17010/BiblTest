@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="92a85fbe90514ac9b88186d258fba7e1" Name="Diagram1">
+        <EntityTypeShape EntityType="LibModel.Autor" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibModel.Book" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibModel.Creat_Build" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibModel.Employee1" Width="1.5" PointX="0.75" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibModel.History_reader_ticket" Width="1.5" PointX="5.25" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibModel.Janr" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibModel.Post" Width="1.5" PointX="1.5" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibModel.Reader" Width="1.5" PointX="0.75" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibModel.Reader_Ticket" Width="1.5" PointX="3" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibModel.Shall" Width="1.5" PointX="0.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="LibModel.FK_Book_Autor" ManuallyRouted="false" />
+        <AssociationConnector Association="LibModel.FK_Book_Creat_Build" ManuallyRouted="false" />
+        <AssociationConnector Association="LibModel.FK_Book_Janr" ManuallyRouted="false" />
+        <AssociationConnector Association="LibModel.FK_Book_Shall" ManuallyRouted="false" />
+        <AssociationConnector Association="LibModel.FK_History_reader_ticket_Book" ManuallyRouted="false" />
+        <AssociationConnector Association="LibModel.FK_Employee1_Post" ManuallyRouted="false" />
+        <AssociationConnector Association="LibModel.FK_Reader_Ticket_Employee1" ManuallyRouted="false" />
+        <AssociationConnector Association="LibModel.FK_History_reader_ticket_Reader_Ticket" ManuallyRouted="false" />
+        <AssociationConnector Association="LibModel.FK_Reader_Ticket_Reader" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

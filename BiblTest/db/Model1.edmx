@@ -1,0 +1,721 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище LibModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Autor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar(max)" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Patronymic" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="ID_author" Type="int" />
+          <Property Name="YearMade" Type="date" />
+          <Property Name="ID_creat_build" Type="int" />
+          <Property Name="ID_Janr" Type="int" />
+          <Property Name="CountPage" Type="int" />
+          <Property Name="IsDelete" Type="bit" />
+          <Property Name="IDShall" Type="int" />
+          <Property Name="Shelf" Type="int" />
+        </EntityType>
+        <EntityType Name="Creat_Build">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Employee1">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar(max)" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Patronymic" Type="nvarchar(max)" />
+          <Property Name="IDPost" Type="int" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+          <Property Name="Bdate" Type="date" />
+          <Property Name="Login" Type="nvarchar(max)" />
+          <Property Name="Password" Type="nvarchar(max)" />
+          <Property Name="IsDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="History_reader_ticket">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Ticket" Type="int" />
+          <Property Name="ID_Book" Type="int" />
+          <Property Name="DateStart" Type="date" />
+          <Property Name="DateEnd" Type="date" />
+          <Property Name="Comment" Type="nvarchar(max)" />
+          <Property Name="IsDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="Janr">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Reader">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar(max)" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Patronymic" Type="nvarchar(max)" />
+          <Property Name="Bday" Type="date" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+          <Property Name="IsDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="Reader_Ticket">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Emp" Type="int" />
+          <Property Name="ID_Reader" Type="int" />
+          <Property Name="DateReg" Type="date" />
+          <Property Name="IsDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="Shall">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="CountShelf" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_Book_Autor">
+          <End Role="Autor" Type="Self.Autor" Multiplicity="0..1" />
+          <End Role="Book" Type="Self.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Autor">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="ID_author" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Book_Creat_Build">
+          <End Role="Creat_Build" Type="Self.Creat_Build" Multiplicity="0..1" />
+          <End Role="Book" Type="Self.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Creat_Build">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="ID_creat_build" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Book_Janr">
+          <End Role="Janr" Type="Self.Janr" Multiplicity="0..1" />
+          <End Role="Book" Type="Self.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Janr">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="ID_Janr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Book_Shall">
+          <End Role="Shall" Type="Self.Shall" Multiplicity="0..1" />
+          <End Role="Book" Type="Self.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shall">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="IDShall" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee1_Post">
+          <End Role="Post" Type="Self.Post" Multiplicity="0..1" />
+          <End Role="Employee1" Type="Self.Employee1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employee1">
+              <PropertyRef Name="IDPost" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_History_reader_ticket_Book">
+          <End Role="Book" Type="Self.Book" Multiplicity="0..1" />
+          <End Role="History_reader_ticket" Type="Self.History_reader_ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="History_reader_ticket">
+              <PropertyRef Name="ID_Book" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_History_reader_ticket_Reader_Ticket">
+          <End Role="Reader_Ticket" Type="Self.Reader_Ticket" Multiplicity="0..1" />
+          <End Role="History_reader_ticket" Type="Self.History_reader_ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reader_Ticket">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="History_reader_ticket">
+              <PropertyRef Name="ID_Ticket" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reader_Ticket_Employee1">
+          <End Role="Employee1" Type="Self.Employee1" Multiplicity="0..1" />
+          <End Role="Reader_Ticket" Type="Self.Reader_Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee1">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Reader_Ticket">
+              <PropertyRef Name="ID_Emp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reader_Ticket_Reader">
+          <End Role="Reader" Type="Self.Reader" Multiplicity="0..1" />
+          <End Role="Reader_Ticket" Type="Self.Reader_Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reader">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Reader_Ticket">
+              <PropertyRef Name="ID_Reader" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище LibModelContainer">
+          <EntitySet Name="Autor" EntityType="Self.Autor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Book" EntityType="Self.Book" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Creat_Build" EntityType="Self.Creat_Build" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee1" EntityType="Self.Employee1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="History_reader_ticket" EntityType="Self.History_reader_ticket" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Janr" EntityType="Self.Janr" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Post" EntityType="Self.Post" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reader" EntityType="Self.Reader" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reader_Ticket" EntityType="Self.Reader_Ticket" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Shall" EntityType="Self.Shall" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Book_Autor" Association="Self.FK_Book_Autor">
+            <End Role="Autor" EntitySet="Autor" />
+            <End Role="Book" EntitySet="Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Book_Creat_Build" Association="Self.FK_Book_Creat_Build">
+            <End Role="Creat_Build" EntitySet="Creat_Build" />
+            <End Role="Book" EntitySet="Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Book_Janr" Association="Self.FK_Book_Janr">
+            <End Role="Janr" EntitySet="Janr" />
+            <End Role="Book" EntitySet="Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Book_Shall" Association="Self.FK_Book_Shall">
+            <End Role="Shall" EntitySet="Shall" />
+            <End Role="Book" EntitySet="Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee1_Post" Association="Self.FK_Employee1_Post">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="Employee1" EntitySet="Employee1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_History_reader_ticket_Book" Association="Self.FK_History_reader_ticket_Book">
+            <End Role="Book" EntitySet="Book" />
+            <End Role="History_reader_ticket" EntitySet="History_reader_ticket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_History_reader_ticket_Reader_Ticket" Association="Self.FK_History_reader_ticket_Reader_Ticket">
+            <End Role="Reader_Ticket" EntitySet="Reader_Ticket" />
+            <End Role="History_reader_ticket" EntitySet="History_reader_ticket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reader_Ticket_Employee1" Association="Self.FK_Reader_Ticket_Employee1">
+            <End Role="Employee1" EntitySet="Employee1" />
+            <End Role="Reader_Ticket" EntitySet="Reader_Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reader_Ticket_Reader" Association="Self.FK_Reader_Ticket_Reader">
+            <End Role="Reader" EntitySet="Reader" />
+            <End Role="Reader_Ticket" EntitySet="Reader_Ticket" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LibModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Autor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Book" Relationship="Self.FK_Book_Autor" FromRole="Autor" ToRole="Book" />
+        </EntityType>
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ID_author" Type="Int32" />
+          <Property Name="YearMade" Type="DateTime" Precision="0" />
+          <Property Name="ID_creat_build" Type="Int32" />
+          <Property Name="ID_Janr" Type="Int32" />
+          <Property Name="CountPage" Type="Int32" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <Property Name="IDShall" Type="Int32" />
+          <Property Name="Shelf" Type="Int32" />
+          <NavigationProperty Name="Autor" Relationship="Self.FK_Book_Autor" FromRole="Book" ToRole="Autor" />
+          <NavigationProperty Name="Creat_Build" Relationship="Self.FK_Book_Creat_Build" FromRole="Book" ToRole="Creat_Build" />
+          <NavigationProperty Name="Janr" Relationship="Self.FK_Book_Janr" FromRole="Book" ToRole="Janr" />
+          <NavigationProperty Name="Shall" Relationship="Self.FK_Book_Shall" FromRole="Book" ToRole="Shall" />
+          <NavigationProperty Name="History_reader_ticket" Relationship="Self.FK_History_reader_ticket_Book" FromRole="Book" ToRole="History_reader_ticket" />
+        </EntityType>
+        <EntityType Name="Creat_Build">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Book" Relationship="Self.FK_Book_Creat_Build" FromRole="Creat_Build" ToRole="Book" />
+        </EntityType>
+        <EntityType Name="Employee1">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IDPost" Type="Int32" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Bdate" Type="DateTime" Precision="0" />
+          <Property Name="Login" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <NavigationProperty Name="Post" Relationship="Self.FK_Employee1_Post" FromRole="Employee1" ToRole="Post" />
+          <NavigationProperty Name="Reader_Ticket" Relationship="Self.FK_Reader_Ticket_Employee1" FromRole="Employee1" ToRole="Reader_Ticket" />
+        </EntityType>
+        <EntityType Name="History_reader_ticket">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Ticket" Type="Int32" />
+          <Property Name="ID_Book" Type="Int32" />
+          <Property Name="DateStart" Type="DateTime" Precision="0" />
+          <Property Name="DateEnd" Type="DateTime" Precision="0" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <NavigationProperty Name="Book" Relationship="Self.FK_History_reader_ticket_Book" FromRole="History_reader_ticket" ToRole="Book" />
+          <NavigationProperty Name="Reader_Ticket" Relationship="Self.FK_History_reader_ticket_Reader_Ticket" FromRole="History_reader_ticket" ToRole="Reader_Ticket" />
+        </EntityType>
+        <EntityType Name="Janr">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Book" Relationship="Self.FK_Book_Janr" FromRole="Janr" ToRole="Book" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employee1" Relationship="Self.FK_Employee1_Post" FromRole="Post" ToRole="Employee1" />
+        </EntityType>
+        <EntityType Name="Reader">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Bday" Type="DateTime" Precision="0" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <NavigationProperty Name="Reader_Ticket" Relationship="Self.FK_Reader_Ticket_Reader" FromRole="Reader" ToRole="Reader_Ticket" />
+        </EntityType>
+        <EntityType Name="Reader_Ticket">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Emp" Type="Int32" />
+          <Property Name="ID_Reader" Type="Int32" />
+          <Property Name="DateReg" Type="DateTime" Precision="0" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <NavigationProperty Name="Employee1" Relationship="Self.FK_Reader_Ticket_Employee1" FromRole="Reader_Ticket" ToRole="Employee1" />
+          <NavigationProperty Name="History_reader_ticket" Relationship="Self.FK_History_reader_ticket_Reader_Ticket" FromRole="Reader_Ticket" ToRole="History_reader_ticket" />
+          <NavigationProperty Name="Reader" Relationship="Self.FK_Reader_Ticket_Reader" FromRole="Reader_Ticket" ToRole="Reader" />
+        </EntityType>
+        <EntityType Name="Shall">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CountShelf" Type="Int32" />
+          <NavigationProperty Name="Book" Relationship="Self.FK_Book_Shall" FromRole="Shall" ToRole="Book" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Book_Autor">
+          <End Role="Autor" Type="Self.Autor" Multiplicity="0..1" />
+          <End Role="Book" Type="Self.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Autor">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="ID_author" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Book_Creat_Build">
+          <End Role="Creat_Build" Type="Self.Creat_Build" Multiplicity="0..1" />
+          <End Role="Book" Type="Self.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Creat_Build">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="ID_creat_build" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Book_Janr">
+          <End Role="Janr" Type="Self.Janr" Multiplicity="0..1" />
+          <End Role="Book" Type="Self.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Janr">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="ID_Janr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Book_Shall">
+          <End Role="Shall" Type="Self.Shall" Multiplicity="0..1" />
+          <End Role="Book" Type="Self.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shall">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="IDShall" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_History_reader_ticket_Book">
+          <End Role="Book" Type="Self.Book" Multiplicity="0..1" />
+          <End Role="History_reader_ticket" Type="Self.History_reader_ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="History_reader_ticket">
+              <PropertyRef Name="ID_Book" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee1_Post">
+          <End Role="Post" Type="Self.Post" Multiplicity="0..1" />
+          <End Role="Employee1" Type="Self.Employee1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employee1">
+              <PropertyRef Name="IDPost" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reader_Ticket_Employee1">
+          <End Role="Employee1" Type="Self.Employee1" Multiplicity="0..1" />
+          <End Role="Reader_Ticket" Type="Self.Reader_Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee1">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Reader_Ticket">
+              <PropertyRef Name="ID_Emp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_History_reader_ticket_Reader_Ticket">
+          <End Role="Reader_Ticket" Type="Self.Reader_Ticket" Multiplicity="0..1" />
+          <End Role="History_reader_ticket" Type="Self.History_reader_ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reader_Ticket">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="History_reader_ticket">
+              <PropertyRef Name="ID_Ticket" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reader_Ticket_Reader">
+          <End Role="Reader" Type="Self.Reader" Multiplicity="0..1" />
+          <End Role="Reader_Ticket" Type="Self.Reader_Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reader">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Reader_Ticket">
+              <PropertyRef Name="ID_Reader" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LibEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Autor" EntityType="Self.Autor" />
+          <EntitySet Name="Book" EntityType="Self.Book" />
+          <EntitySet Name="Creat_Build" EntityType="Self.Creat_Build" />
+          <EntitySet Name="Employee1" EntityType="Self.Employee1" />
+          <EntitySet Name="History_reader_ticket" EntityType="Self.History_reader_ticket" />
+          <EntitySet Name="Janr" EntityType="Self.Janr" />
+          <EntitySet Name="Post" EntityType="Self.Post" />
+          <EntitySet Name="Reader" EntityType="Self.Reader" />
+          <EntitySet Name="Reader_Ticket" EntityType="Self.Reader_Ticket" />
+          <EntitySet Name="Shall" EntityType="Self.Shall" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="FK_Book_Autor" Association="Self.FK_Book_Autor">
+            <End Role="Autor" EntitySet="Autor" />
+            <End Role="Book" EntitySet="Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Book_Creat_Build" Association="Self.FK_Book_Creat_Build">
+            <End Role="Creat_Build" EntitySet="Creat_Build" />
+            <End Role="Book" EntitySet="Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Book_Janr" Association="Self.FK_Book_Janr">
+            <End Role="Janr" EntitySet="Janr" />
+            <End Role="Book" EntitySet="Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Book_Shall" Association="Self.FK_Book_Shall">
+            <End Role="Shall" EntitySet="Shall" />
+            <End Role="Book" EntitySet="Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK_History_reader_ticket_Book" Association="Self.FK_History_reader_ticket_Book">
+            <End Role="Book" EntitySet="Book" />
+            <End Role="History_reader_ticket" EntitySet="History_reader_ticket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee1_Post" Association="Self.FK_Employee1_Post">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="Employee1" EntitySet="Employee1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reader_Ticket_Employee1" Association="Self.FK_Reader_Ticket_Employee1">
+            <End Role="Employee1" EntitySet="Employee1" />
+            <End Role="Reader_Ticket" EntitySet="Reader_Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_History_reader_ticket_Reader_Ticket" Association="Self.FK_History_reader_ticket_Reader_Ticket">
+            <End Role="Reader_Ticket" EntitySet="Reader_Ticket" />
+            <End Role="History_reader_ticket" EntitySet="History_reader_ticket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reader_Ticket_Reader" Association="Self.FK_Reader_Ticket_Reader">
+            <End Role="Reader" EntitySet="Reader" />
+            <End Role="Reader_Ticket" EntitySet="Reader_Ticket" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище LibModelContainer" CdmEntityContainer="LibEntities">
+          <EntitySetMapping Name="Autor">
+            <EntityTypeMapping TypeName="LibModel.Autor">
+              <MappingFragment StoreEntitySet="Autor">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Book">
+            <EntityTypeMapping TypeName="LibModel.Book">
+              <MappingFragment StoreEntitySet="Book">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID_author" ColumnName="ID_author" />
+                <ScalarProperty Name="YearMade" ColumnName="YearMade" />
+                <ScalarProperty Name="ID_creat_build" ColumnName="ID_creat_build" />
+                <ScalarProperty Name="ID_Janr" ColumnName="ID_Janr" />
+                <ScalarProperty Name="CountPage" ColumnName="CountPage" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="IDShall" ColumnName="IDShall" />
+                <ScalarProperty Name="Shelf" ColumnName="Shelf" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Creat_Build">
+            <EntityTypeMapping TypeName="LibModel.Creat_Build">
+              <MappingFragment StoreEntitySet="Creat_Build">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee1">
+            <EntityTypeMapping TypeName="LibModel.Employee1">
+              <MappingFragment StoreEntitySet="Employee1">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="IDPost" ColumnName="IDPost" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Bdate" ColumnName="Bdate" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="History_reader_ticket">
+            <EntityTypeMapping TypeName="LibModel.History_reader_ticket">
+              <MappingFragment StoreEntitySet="History_reader_ticket">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Ticket" ColumnName="ID_Ticket" />
+                <ScalarProperty Name="ID_Book" ColumnName="ID_Book" />
+                <ScalarProperty Name="DateStart" ColumnName="DateStart" />
+                <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Janr">
+            <EntityTypeMapping TypeName="LibModel.Janr">
+              <MappingFragment StoreEntitySet="Janr">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Post">
+            <EntityTypeMapping TypeName="LibModel.Post">
+              <MappingFragment StoreEntitySet="Post">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reader">
+            <EntityTypeMapping TypeName="LibModel.Reader">
+              <MappingFragment StoreEntitySet="Reader">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Bday" ColumnName="Bday" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reader_Ticket">
+            <EntityTypeMapping TypeName="LibModel.Reader_Ticket">
+              <MappingFragment StoreEntitySet="Reader_Ticket">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Emp" ColumnName="ID_Emp" />
+                <ScalarProperty Name="ID_Reader" ColumnName="ID_Reader" />
+                <ScalarProperty Name="DateReg" ColumnName="DateReg" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shall">
+            <EntityTypeMapping TypeName="LibModel.Shall">
+              <MappingFragment StoreEntitySet="Shall">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CountShelf" ColumnName="CountShelf" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="LibModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
