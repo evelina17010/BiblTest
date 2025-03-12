@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BiblTest.db;
+using BiblTest.Pages;
 
 namespace BiblTest.Windows
 {
@@ -22,6 +24,26 @@ namespace BiblTest.Windows
         public MenuEmployeeWindow()
         {
             InitializeComponent();
+        }
+
+        private void readerBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MenuFr.NavigationService.Navigate(new RidersPage());
+        }
+
+        private void bookBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void reportBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void exitBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

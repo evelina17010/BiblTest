@@ -28,12 +28,12 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Image Source="\Resourse\employee.png" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
-        <TextBlock Text="Иванова Катя Ивановна" FontSize="20" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" VerticalAlignment="Top" FontWeight="Bold" />
+        <TextBlock Text="Иванова Катя Ивановна" FontSize="16" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" VerticalAlignment="Top" FontWeight="Bold" />
         <TextBlock Text="Id:00001" FontSize="10" Grid.Row="2" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Foreground="Gray"/>
         <Button x:Name="readerBtn" Content="Читатели" Grid.Row="3" Grid.ColumnSpan="2" FontSize="15" Background="Wheat" VerticalContentAlignment="Center" Click="readerBtn_Click"/>
-        <Button x:Name="bookBtn" Content="Книги" Grid.Row="4" Grid.ColumnSpan="2" FontSize="15" Background="Purple" VerticalContentAlignment="Center" Click="bookBtn_Click"/>
+        <Button x:Name="bookBtn" Content="Книги" Grid.Row="4" Grid.ColumnSpan="2" FontSize="15" Background="LightPink" VerticalContentAlignment="Center" Click="bookBtn_Click"/>
         <Button x:Name="reportBtn" Content="Отчеты" Grid.Row="5" Grid.ColumnSpan="2" FontSize="15" Background="LightSkyBlue" VerticalContentAlignment="Center" Click="reportBtn_Click"/>
-        <Button x:Name="exitBtn" Content="Выход" Grid.Row="6" Grid.ColumnSpan="2" Grid.RowSpan="2" FontSize="15" Background="DarkOrange" Foreground="Gold" VerticalContentAlignment="Center" Click="exitBtn_Click"/>
+        <Button x:Name="exitBtn" Content="Выход" Grid.Row="6" Grid.ColumnSpan="2" Grid.RowSpan="2" FontSize="15" Background="Magenta" Foreground="Gold" VerticalContentAlignment="Center" Click="exitBtn_Click"/>
         <Frame x:Name="MenuFr" Grid.Column="2" Grid.ColumnSpan="6" Grid.RowSpan="8"/>
     </Grid>
 </Window>

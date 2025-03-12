@@ -64,6 +64,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="db\Connection.cs" />
+    <Compile Include="Pages\BooksPage.xaml.cs">
+      <DependentUpon>BooksPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RidersPage.xaml.cs">
+      <DependentUpon>RidersPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\MenuEmployeeWindow.xaml.cs">
       <DependentUpon>MenuEmployeeWindow.xaml</DependentUpon>
     </Compile>
@@ -132,6 +139,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\AuthorisationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\BooksPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RidersPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

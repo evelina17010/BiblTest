@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BiblTest.Windows;
 
 namespace BiblTest.Pages
 {
@@ -27,7 +28,8 @@ namespace BiblTest.Pages
 
         private void btnVhod_Click(object sender, RoutedEventArgs e)
         {
-           
+            MenuEmployeeWindow menuEmployeeWindow = new MenuEmployeeWindow();
+            menuEmployeeWindow.Show();
         }
 
         private void btnVhodChit_Click(object sender, RoutedEventArgs e)
