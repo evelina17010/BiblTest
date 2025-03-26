@@ -1,0 +1,61 @@
+﻿<Window x:Class="BiblTest.Windows.AddBook"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BiblTest.Windows"
+        mc:Ignorable="d"
+        Title="AddBook" Height="560" Width="810">
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="10"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Название"  Grid.Row="1" Grid.Column="1"  Margin="5" Width="300" Height="40" HorizontalAlignment="Left"/>
+        <TextBlock Text="Автор"  Grid.Row="2" Grid.Column="1"  Margin="5" Width="300" Height="40" HorizontalAlignment="Left"/>
+        <TextBlock Text="Год издания" Grid.Row="3" Grid.Column="1"  Margin="5" Width="300" Height="40" HorizontalAlignment="Left"/>
+        <TextBlock Text="Редакция"  Grid.Row="4" Grid.Column="1" Margin="5" Width="300" Height="40" HorizontalAlignment="Left"/>
+        <TextBlock Text="Жанр" Grid.Row="5" Grid.Column="1"  Margin="5" Width="300" Height="40" HorizontalAlignment="Left"/>
+        <TextBlock Text="Кол-во стр" Grid.Row="6" Grid.Column="1"  Margin="5" Width="300" Height="40" HorizontalAlignment="Left"/>
+        <TextBlock Text="Зал"  Grid.Row="7" Grid.Column="1" Margin="5" Width="300" Height="40" HorizontalAlignment="Left"/>
+        <TextBlock Text="Полка" Grid.Row="8" Grid.Column="1"  Margin="5" Width="300" Height="40" HorizontalAlignment="Left"/>
+        <TextBox x:Name="nametxb"  Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Margin="5" Width="300" Height="40" HorizontalAlignment="Left"/>
+        <TextBox x:Name="autortxb"  Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Margin="5" Width="300" Height="40" HorizontalAlignment="Left"/>
+        <TextBox x:Name="yearetxb"  Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Margin="5" Width="300" Height="40" HorizontalAlignment="Left"/>
+        <TextBox x:Name="creat_build"  Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Margin="5" Width="300" Height="40" HorizontalAlignment="Left"/>
+        <TextBox x:Name="janrtxb"  Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" Margin="5" Width="300" Height="40" HorizontalAlignment="Left"/>
+        <TextBox x:Name="countPagetxb"  Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2" Margin="5" Width="300" Height="40" HorizontalAlignment="Left"/>
+        <TextBox x:Name="shalltxb"  Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="2" Margin="5" Width="300" Height="40" HorizontalAlignment="Left"/>
+        <TextBox x:Name="shelftxb" Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="2" Margin="5" Width="300" Height="40" HorizontalAlignment="Left"/>
+        <Button x:Name="SaveBook" Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="2" Margin="5" Width="300" Height="30" Content="Сохранить" Click="SaveBook_Click"  FontSize="20"/>
+    </Grid>
+</Window>

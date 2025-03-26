@@ -33,7 +33,7 @@ namespace BiblTest.Windows
 
         private void bookBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            MenuFr.NavigationService.Navigate(new BookPage());
         }
 
         private void reportBtn_Click(object sender, RoutedEventArgs e)

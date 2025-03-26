@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище LibModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище LibModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Autor">
           <Key>
             <PropertyRef Name="ID" />
@@ -201,7 +201,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Reader_Ticket_Employee1">
+        <Association Name="FK_Reader_Ticket_Employee11">
           <End Role="Employee1" Type="Self.Employee1" Multiplicity="0..1" />
           <End Role="Reader_Ticket" Type="Self.Reader_Ticket" Multiplicity="*" />
           <ReferentialConstraint>
@@ -265,7 +265,7 @@
             <End Role="Reader_Ticket" EntitySet="Reader_Ticket" />
             <End Role="History_reader_ticket" EntitySet="History_reader_ticket" />
           </AssociationSet>
-          <AssociationSet Name="FK_Reader_Ticket_Employee1" Association="Self.FK_Reader_Ticket_Employee1">
+          <AssociationSet Name="FK_Reader_Ticket_Employee11" Association="Self.FK_Reader_Ticket_Employee11">
             <End Role="Employee1" EntitySet="Employee1" />
             <End Role="Reader_Ticket" EntitySet="Reader_Ticket" />
           </AssociationSet>
@@ -274,8 +274,7 @@
             <End Role="Reader_Ticket" EntitySet="Reader_Ticket" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="LibModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">

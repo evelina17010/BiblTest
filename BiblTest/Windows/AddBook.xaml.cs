@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BiblTest.db;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,19 +11,25 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BiblTest.Pages
+namespace BiblTest.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для BooksPage.xaml
+    /// Логика взаимодействия для AddBook.xaml
     /// </summary>
-    public partial class BooksPage : Page
+    public partial class AddBook : Window
     {
-        public BooksPage()
+        public AddBook()
         {
             InitializeComponent();
+        }
+
+        private void SaveBook_Click(object sender, RoutedEventArgs e)
+        {
+            Book book = new Book();
+            book.Name= nametxb.Text.Trim();
+            book.
         }
     }
 }
