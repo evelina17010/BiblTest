@@ -26,9 +26,10 @@ namespace BiblTest.Windows
         }
 
         private void SaveReader_Click(object sender, RoutedEventArgs e)
-        {
+        { 
             Reader reader = new Reader();
-            reader.LastName= lastnametxb.Text.Trim();
+            if (lastnametxb.Text != null && nametxb.Text!=null && pattxb.Text!=null && bday.SelectedDate!=null && phonetxb.Text!=null)
+                reader.LastName= lastnametxb.Text.Trim();
             reader.Name= nametxb.Text.Trim();
             reader.Patronymic= pattxb.Text.Trim();
             reader.Bday= bday.SelectedDate;

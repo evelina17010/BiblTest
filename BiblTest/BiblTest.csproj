@@ -94,6 +94,9 @@
     <Compile Include="Pages\RidersPage.xaml.cs">
       <DependentUpon>RidersPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\AddAuhtor.xaml.cs">
+      <DependentUpon>AddAuhtor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\AddBook.xaml.cs">
       <DependentUpon>AddBook.xaml</DependentUpon>
     </Compile>
@@ -179,6 +182,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\RidersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\AddAuhtor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

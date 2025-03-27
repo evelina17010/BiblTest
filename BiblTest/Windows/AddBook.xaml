@@ -49,13 +49,49 @@
         <TextBlock Text="Зал"  Grid.Row="7" Grid.Column="1" Margin="5" Width="300" Height="40" HorizontalAlignment="Left"/>
         <TextBlock Text="Полка" Grid.Row="8" Grid.Column="1"  Margin="5" Width="300" Height="40" HorizontalAlignment="Left"/>
         <TextBox x:Name="nametxb"  Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Margin="5" Width="300" Height="40" HorizontalAlignment="Left"/>
-        <TextBox x:Name="autortxb"  Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Margin="5" Width="300" Height="40" HorizontalAlignment="Left"/>
-        <TextBox x:Name="yearetxb"  Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Margin="5" Width="300" Height="40" HorizontalAlignment="Left"/>
-        <TextBox x:Name="creat_build"  Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Margin="5" Width="300" Height="40" HorizontalAlignment="Left"/>
-        <TextBox x:Name="janrtxb"  Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" Margin="5" Width="300" Height="40" HorizontalAlignment="Left"/>
-        <TextBox x:Name="countPagetxb"  Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2" Margin="5" Width="300" Height="40" HorizontalAlignment="Left"/>
-        <TextBox x:Name="shalltxb"  Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="2" Margin="5" Width="300" Height="40" HorizontalAlignment="Left"/>
-        <TextBox x:Name="shelftxb" Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="2" Margin="5" Width="300" Height="40" HorizontalAlignment="Left"/>
+        <ComboBox Name="Autor" Grid.Row="2" Grid.Column="2" Width="300" Height="40" Grid.ColumnSpan="2" VerticalAlignment="Center"  HorizontalAlignment="Left" ItemsSource="{Binding autors}" >
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding LastName}"/>
+                        <TextBlock Text="{Binding Name}"/>
+                        <TextBlock Text="{Binding Patronymic}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Button x:Name="addAuhtor" Grid.Row="2" Grid.Column="0" Content="Добавить автора" Width="110" Height="50"  HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 5 0" Click="addAuhtor_Click"/>
+        <DatePicker x:Name="yearetxb"  Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Margin="5" Width="300" Height="40" HorizontalAlignment="Left"/>
+        <ComboBox Name="Redac" Grid.Row="4" Grid.Column="2" Width="300" Height="40" Grid.ColumnSpan="2" VerticalAlignment="Center"  HorizontalAlignment="Left" ItemsSource="{Binding creat_s}" >
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Name}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <ComboBox Name="Janr" Grid.Row="5" Grid.Column="2" Width="300" Height="40" Grid.ColumnSpan="2" VerticalAlignment="Center"  HorizontalAlignment="Left" ItemsSource="{Binding janrs}" >
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Name}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <TextBox x:Name="CountPagetxb"  Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2" Margin="5" Width="300" Height="40" HorizontalAlignment="Left"/>
+        <ComboBox Name="Shall" Grid.Row="7" Grid.Column="2" Width="300" Height="40" Grid.ColumnSpan="2" VerticalAlignment="Center"  HorizontalAlignment="Left" ItemsSource="{Binding challs}" >
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Name}"/>
+                        <TextBlock Text="{Binding CountShelf}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <TextBox x:Name="shelftxb" Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="2" Margin="5" Width="300" Height="40" HorizontalAlignment="Left" TextChanged="shelftxb_TextChanged"/>
         <Button x:Name="SaveBook" Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="2" Margin="5" Width="300" Height="30" Content="Сохранить" Click="SaveBook_Click"  FontSize="20"/>
     </Grid>
 </Window>

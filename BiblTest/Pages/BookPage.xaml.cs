@@ -49,8 +49,8 @@ namespace BiblTest.Pages
         private void Filter_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var a = Filter.SelectedItem as Autor;
-            if (a.ID == -1)
-                lstBook.ItemsSource = books.Where(i => i.ID == a.ID).ToList();
+            if (a.ID != -1)
+                lstBook.ItemsSource = books.Where(i => i.ID_author == a.ID).ToList();
             else
                 lstBook.ItemsSource = books.ToList();
         }

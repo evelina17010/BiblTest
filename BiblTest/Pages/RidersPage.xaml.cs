@@ -44,8 +44,8 @@ namespace BiblTest.Pages
 
         private void Filter_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {  var t= lstReader.SelectedItem as Employee1;               
-            if(t.ID==-1)
-            lstReader.ItemsSource = reader_tic.Where(i => i.ID_Emp==t.ID).ToList();
+            if(t.ID!=-1)
+            lstReader.ItemsSource = reader_tic.Where(i => i.ID_Emp == t.ID).ToList();
             else
                 lstReader.ItemsSource = reader_tic.ToList() ;
         }
