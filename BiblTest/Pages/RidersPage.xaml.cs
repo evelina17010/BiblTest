@@ -62,5 +62,11 @@ namespace BiblTest.Pages
             Windows.AddReader addReader = new Windows.AddReader();
             addReader.Show();
         }
+
+        private void Readersbtn_Click(object sender, RoutedEventArgs e)
+        {
+            ReadersList readersList = new ReadersList();
+            readersList.Show();
+        }
     }
 }

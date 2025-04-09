@@ -106,8 +106,14 @@
     <Compile Include="Windows\AddRiderTic.xaml.cs">
       <DependentUpon>AddRiderTic.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\EditReader.xaml.cs">
+      <DependentUpon>EditReader.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\MenuEmployeeWindow.xaml.cs">
       <DependentUpon>MenuEmployeeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\ReadersList.xaml.cs">
+      <DependentUpon>ReadersList.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -201,7 +207,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\EditReader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\MenuEmployeeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\ReadersList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
